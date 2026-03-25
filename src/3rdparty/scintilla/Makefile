@@ -124,6 +124,7 @@ LEX_OBJS=\
 	$(DIR_O)\LexErlang.obj \
 	$(DIR_O)\LexErrorList.obj \
 	$(DIR_O)\LexEScript.obj \
+	$(DIR_O)\LexEscSeq.obj \
 	$(DIR_O)\LexFlagship.obj \
 	$(DIR_O)\LexForth.obj \
 	$(DIR_O)\LexFortran.obj \
@@ -207,6 +208,7 @@ LEX_OBJS=\
 	$(DIR_O)\LexX12.obj \
 	$(DIR_O)\LexYAML.obj \
 	$(DIR_O)\LexZig.obj \
+	$(DIR_O)\LexSINEX.obj \
 	$(DIR_O)\LexResult.obj \
 	$(DIR_O)\LexDemo.obj \
 	$(DIR_O)\LexSnippets.obj \

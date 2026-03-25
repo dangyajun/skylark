@@ -75,6 +75,7 @@ extern const LexerModule lmEiffelkw;
 extern const LexerModule lmErlang;
 extern const LexerModule lmErrorList;
 extern const LexerModule lmESCRIPT;
+extern const LexerModule lmEscSeq;
 extern const LexerModule lmF77;
 extern const LexerModule lmFlagShip;
 extern const LexerModule lmForth;
@@ -141,6 +142,7 @@ extern const LexerModule lmRuby;
 extern const LexerModule lmRust;
 extern const LexerModule lmSAS;
 extern const LexerModule lmScriptol;
+extern const LexerModule lmSINEX;
 extern const LexerModule lmSmalltalk;
 extern const LexerModule lmSML;
 extern const LexerModule lmSorc;
@@ -231,6 +233,7 @@ void AddEachLexer() {
 		&lmErlang,
 		&lmErrorList,
 		&lmESCRIPT,
+		&lmEscSeq,
 		&lmF77,
 		&lmFlagShip,
 		&lmForth,
@@ -297,6 +300,7 @@ void AddEachLexer() {
 		&lmRust,
 		&lmSAS,
 		&lmScriptol,
+		&lmSINEX,
 		&lmSmalltalk,
 		&lmSML,
 		&lmSorc,
