@@ -90,7 +90,8 @@ enum dctype
     DOCTYPE_BATCH = 46,
     DOCTYPE_POWERSHELL = 47,
     DOCTYPE_TOML = 48,
-    DOCTYPE_ZIG = 49
+    DOCTYPE_ZIG = 49,
+    DOCTYPE_PHP = 50
 };
 
 typedef struct _doc_styles
