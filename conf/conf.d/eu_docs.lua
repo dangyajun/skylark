@@ -1182,10 +1182,11 @@ function fetch_doctype(s)
           end
         end
     end
-    if (count > 0) then
-      local bit = require("bit")
+    if (count > 0 and count < 128) then
+      m_config.style.mask = 1
+      for i = 0, 200 do m_config.style.type[i] = -1 end
       for k, v in pairs(m_styles) do
-        if (k < 32) then
+        if (k < 200) then
           local pcolor = nil
           if (type(v) == "string") then pcolor = string.split(v, "&&") end
           if (pcolor ~= nil and #pcolor == 2) then
@@ -1204,7 +1205,6 @@ function fetch_doctype(s)
             m_config.style.bkcolor[k] = 0xFFFFFFFF
           end
           m_config.style.type[k] = k
-          m_config.style.mask = bit.bor(m_config.style.mask,bit.lshift(1,k))
         end
       end
     end

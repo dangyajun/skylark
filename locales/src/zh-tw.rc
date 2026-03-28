@@ -78,7 +78,9 @@ BEGIN
     BEGIN
         MENUITEM "還原(&U)",                                    IDM_EDIT_UNDO
         MENUITEM "重做(&R)",                                    IDM_EDIT_REDO
+        MENUITEM MF_SEPARATOR
         MENUITEM "還原時恢復選取(&S)",                          IDM_EDIT_UNDO_SELECTION
+        MENUITEM "編輯區禁止拖曳(&N)",                          IDM_EDIT_NODRAG
         MENUITEM MF_SEPARATOR
         MENUITEM "剪下",                                        IDM_EDIT_CUT
         MENUITEM "複製",                                        IDM_EDIT_COPY
@@ -261,6 +263,7 @@ BEGIN
             MENUITEM "顯示程式圖示(&I)",                        IDM_VIEW_TITLEBAR_ICON
             MENUITEM "顯示程式名稱(&N)",                        IDM_VIEW_TITLEBAR_NAME
             MENUITEM "顯示文件路徑(&P)",                        IDM_VIEW_TITLEBAR_PATH
+            MENUITEM "跟隨系統主題(&T)",                        IDM_VIEW_TITLEBAR_THEME
         END
         POPUP "調整工具列"
         BEGIN

@@ -19,7 +19,7 @@
 #ifndef _H_SKYLARK_DOCTYPE_
 #define _H_SKYLARK_DOCTYPE_
 
-#define SCE_STYLE_MAX 32
+#define SCE_STYLE_MAX 200
 #define CONFIG_KEY_MATERIAL_LEXER "EU_DOCTYP"
 
 #ifdef __cplusplus

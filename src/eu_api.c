@@ -2097,7 +2097,7 @@ eu_save_config(void)
     char *pactions = NULL;
     char *pcustomize = NULL;
     const char *p = NULL;
-    TCHAR path[MAX_BUFFER+1] = {0};
+    TCHAR path[MAX_BUFFER] = {0};
     const char *pconfig =
         "--[=[if you edit the file, please keep the encoding correct(utf-8 nobom)]=]\n"
         "newfile_eols = %d\n"
@@ -2149,6 +2149,7 @@ eu_save_config(void)
         "update_file_notify = %d\n"
         "doc_highlight_restrict = 0x%x\n"
         "set_undo_selection = %s\n"
+        "set_no_dragging = %s\n"
         "light_all_find_str = %s\n"
         "backup_on_file_write = %s\n"
         "save_last_session = %s\n"
@@ -2203,7 +2204,8 @@ eu_save_config(void)
         "titlebar = {\n"
         "    icon = %s,\n"
         "    name = %s,\n"
-        "    path = %s\n"
+        "    path = %s,\n"
+        "    theme = %s\n"
         "}\n"
         "-- Master Slave view default setting\n"
         "mstab = {\n"
@@ -2238,6 +2240,7 @@ eu_save_config(void)
         "}\n"
         "-- when a multiple selection is copied, this string property is added between each part\n"
         "set_copy_separator = \"%s\"\n"
+        "last_filetree_path = \"%s\"\n"
         "-- uses the backslash ( / ) to separate directories in file path. default value: cmd.exe\n"
         "process_path = \"%s\"\n"
         "other_editor_path = \"%s\"\n"
@@ -2275,17 +2278,18 @@ eu_save_config(void)
     {
         if ((p == g_config->sep_copy) || ((p - g_config->sep_copy) > 0 && p[-1] != '\\'))
         {
-            eu_str_replace(g_config->sep_copy, MAX_PATH, "\r", "\\r");
+            eu_str_replace(g_config->sep_copy, DW_SIZE, "\r", "\\r");
         }
     }
     if ((p = strchr(g_config->sep_copy, '\n')) != NULL)
     {
         if ((p == g_config->sep_copy) || ((p - g_config->sep_copy) > 0 && p[-1] != '\\'))
         {
-            eu_str_replace(g_config->sep_copy, MAX_PATH, "\n", "\\n");
+            eu_str_replace(g_config->sep_copy, DW_SIZE, "\n", "\\n");
         }
     }
-    _sntprintf(path, MAX_BUFFER, _T("%s\\skylark.conf"), eu_config_path);
+    // 更新主配置文件
+    _sntprintf(path, MAX_BUFFER - 1, _T("%s\\skylark.conf"), eu_config_path);
     _snprintf(save, BUFF_32K - 1, pconfig,
               g_config->new_file_eol,
               g_config->new_file_enc,
@@ -2333,6 +2337,7 @@ eu_save_config(void)
               g_config->m_up_notify,
               g_config->m_doc_restrict,
               g_config->m_undo_selection?"true":"false",
+              g_config->m_nodragging?"true":"false",
               g_config->m_light_str?"true":"false",
               g_config->m_write_copy?"true":"false",
               g_config->m_session?"true":"false",
@@ -2368,6 +2373,7 @@ eu_save_config(void)
               g_config->eu_titlebar.icon?"true":"false",
               g_config->eu_titlebar.name||util_under_wine()?"true":"false",
               g_config->eu_titlebar.path?"true":"false",
+              g_config->eu_titlebar.theme?"true":"false",
               g_config->eu_tab.vertical?"true":"false",
               g_config->eu_tab.horizontal?"true":"false",
               g_config->eu_tab.s_copy?"true":"false",
@@ -2391,6 +2397,7 @@ eu_save_config(void)
               g_config->openai.base,
               g_config->openai.setting,
               g_config->sep_copy,
+              g_config->m_ftree_path,
               g_config->m_path,
               g_config->editor,
               g_config->m_reserved_0,

@@ -399,6 +399,7 @@ typedef struct _titlebar_set
     bool icon;
     bool name;
     bool path;
+    bool theme;
 }titlebar_set;
 
 typedef struct _caret_set
@@ -532,7 +533,7 @@ struct eu_config
     bool block_fold;
     bool m_tab_tip;
     bool m_tab_split;
-    
+
     int m_code_hint;
     int m_close_way;
     int m_close_draw;
@@ -545,13 +546,14 @@ struct eu_config
     int  m_doc_restrict;
 
     bool m_undo_selection;
+    bool m_nodragging;
     bool m_light_str;
     bool m_write_copy;
     bool m_session;
     bool m_exit;
     bool m_instance;
     bool m_logging;
-    char m_placement[MAX_BUFFER];
+    char m_placement[ENV_LEN];
     char m_language[QW_SIZE];
     bookmark_set eu_bookmark;
     brace_set eu_brace;
@@ -565,7 +567,8 @@ struct eu_config
     int m_limit;
     upgrade_set upgrade;
     openai_set openai;
-    char sep_copy[MAX_PATH];
+    char sep_copy[DW_SIZE];
+    char m_ftree_path[MAX_PATH];
     char m_path[MAX_PATH];
     char editor[MAX_PATH];
     char m_reserved_0[MAX_PATH];

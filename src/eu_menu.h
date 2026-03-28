@@ -21,9 +21,8 @@
 
 /* 子菜单所在位置 */
 #define FILES_MENU            0
-#define THEME_MENU            6
+#define SETTINGS_MENU         6
 #define THEME_MENU_SUB        7
-#define LOCALE_MENU           6
 #define LOCALE_MENU_SUB       5
 
 /* 子菜单弹出菜单位置 */

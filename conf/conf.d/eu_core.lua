@@ -43,6 +43,7 @@ typedef struct _titlebar_set
     bool icon;
     bool name;
     bool path;
+    bool theme;
 }titlebar_set;
 
 typedef struct _caret_set
@@ -186,13 +187,14 @@ struct eu_config
     int  m_doc_restrict;
 
     bool m_undo_selection;
+    bool m_nodragging;
     bool m_light_str;
     bool m_write_copy;
     bool m_session;
     bool m_exit;
     bool m_instance;
     bool m_logging;
-    char m_placement[1024];
+    char m_placement[512];
     char m_language[64];
     bookmark_set eu_bookmark;
     brace_set eu_brace;
@@ -206,7 +208,8 @@ struct eu_config
     int m_limit;
     upgrade_set upgrade;
     openai_set openai;
-    char sep_copy[260];
+    char sep_copy[32];
+    char m_ftree_path[260];
     char m_path[260];
     char editor[260];
     char m_reserved_0[260];
@@ -309,9 +312,9 @@ typedef int (*click_tree_ptr)(void *pnode);
 
 typedef struct _doc_styles
 {
-    int type[32];
-    uint32_t fgcolor[32];
-    uint32_t bkcolor[32];
+    int type[200];
+    uint32_t fgcolor[200];
+    uint32_t bkcolor[200];
     uint32_t mask;
 } doc_styles;
 

@@ -569,6 +569,7 @@
 #define IDM_EDIT_BOOKMARK_LINES_RESERVE      30214
 #define IDM_EDIT_GOLINE_GROUP                30215
 #define IDM_EDIT_UNDO_SELECTION              30216
+#define IDM_EDIT_NODRAG                      30217
 
 #define IDM_VIEW_INDENTGUIDES_VISIABLE       30300
 #define IDM_SEARCH_GOTO_PREV_BOOKMARK_INALL  30301
@@ -1315,6 +1316,7 @@
 #define IDM_VIEW_TITLEBAR_ICON              44741
 #define IDM_VIEW_TITLEBAR_NAME              44742
 #define IDM_VIEW_TITLEBAR_PATH              44743
+#define IDM_VIEW_TITLEBAR_THEME             44744
 
 #define IDM_EDIT_PLACEHOLDE_XML             44750
 #define IDM_FORMAT_REFORMAT_XML             44751

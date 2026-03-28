@@ -123,7 +123,7 @@ menu_switch_theme(void)
     if (hwnd)
     {
         HMENU root_menu = GetMenu(hwnd);
-        HMENU view_menu = GetSubMenu(root_menu, THEME_MENU);
+        HMENU view_menu = GetSubMenu(root_menu, SETTINGS_MENU);
         HMENU theme_menu = GetSubMenu(view_menu, THEME_MENU_SUB);
         if (view_menu && theme_menu)
         {
@@ -183,6 +183,8 @@ menu_update_hexview(const HMENU root_menu, const bool hex_mode, const bool init)
         util_enable_menu_item(root_menu, IDM_EDIT_UNDO, init || !hex_mode);
         util_enable_menu_item(root_menu, IDM_EDIT_REDO, init || !hex_mode);
         util_enable_menu_item(root_menu, IDM_UPDATE_SELECTION, init || !hex_mode);
+        util_enable_menu_item(root_menu, IDM_EDIT_UNDO_SELECTION, init || !hex_mode);
+        util_enable_menu_item(root_menu, IDM_EDIT_NODRAG, init || !hex_mode);
         util_enable_menu_item(root_menu, IDM_EDIT_PLACEHOLDE10, init || !hex_mode);
         util_enable_menu_item(root_menu, IDM_EDIT_PLACEHOLDE11, init || !hex_mode);
         util_enable_menu_item(root_menu, IDM_EDIT_PLACEHOLDE12, init || !hex_mode);
@@ -388,7 +390,7 @@ menu_setup(HWND hwnd)
     if (hwnd && SetMenu(hwnd, i18n_load_menu(IDC_SKYLARK)))
     {
         HMENU root_menu = GetMenu(hwnd);
-        HMENU setting_menu = root_menu ? GetSubMenu(root_menu, THEME_MENU) : NULL;
+        HMENU setting_menu = root_menu ? GetSubMenu(root_menu, SETTINGS_MENU) : NULL;
         setting_menu ? on_setting_update_menu(setting_menu) : (void)0;
         if (eu_get_config() && !eu_get_config()->m_menubar)
         {
@@ -470,6 +472,11 @@ menu_update_item(const HMENU menu, const bool init)
                     case IDM_EDIT_UNDO_SELECTION:
                     {
                         util_set_menu_item(menu, IDM_EDIT_UNDO_SELECTION, eu_get_config()->m_undo_selection);
+                        break;
+                    }
+                    case IDM_EDIT_NODRAG:
+                    {
+                        util_set_menu_item(menu, IDM_EDIT_NODRAG, eu_get_config()->m_nodragging);
                         break;
                     }
                     case IDM_EDIT_CUT:
@@ -594,6 +601,7 @@ menu_update_item(const HMENU menu, const bool init)
                         util_set_menu_item(GetSubMenu(menu, TAB_MENU_TITLEBAR_SUB), IDM_VIEW_TITLEBAR_ICON, eu_get_config()->eu_titlebar.icon);
                         util_set_menu_item(GetSubMenu(menu, TAB_MENU_TITLEBAR_SUB), IDM_VIEW_TITLEBAR_NAME, eu_get_config()->eu_titlebar.name);
                         util_set_menu_item(GetSubMenu(menu, TAB_MENU_TITLEBAR_SUB), IDM_VIEW_TITLEBAR_PATH, eu_get_config()->eu_titlebar.path);
+                        util_set_menu_item(GetSubMenu(menu, TAB_MENU_TITLEBAR_SUB), IDM_VIEW_TITLEBAR_THEME, eu_get_config()->eu_titlebar.theme);
                         enable = util_under_wine();
                         util_enable_menu_item(menu, IDM_VIEW_TITLEBAR_ICON, init || !enable);
                         util_enable_menu_item(menu, IDM_VIEW_TITLEBAR_NAME, init || !enable);
